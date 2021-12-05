@@ -49,55 +49,67 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+    >
       <h1>IronContacts</h1>
-      <button className="button" onClick={handleAddContact}>
-        Add Random Contact
-      </button>
-      <button className="button" onClick={handlePopSort}>
-        Sort by popularity
-      </button>
-      <button className="button" onClick={handleNameSort}>
-        Sort by name
-      </button>
-      <table>
-        {allContacts.map((e) => {
-          return (
-            <>
-              <tr>
-                <th>Picture</th>
-                <th>Name</th>
-                <th>Popularity</th>
-                <th>Won Oscar</th>
-                <th>Won Emmy</th>
-                <th>Actions</th>
-              </tr>
-              <tr>
-                <td>
-                  <img
-                    style={{ height: '80px' }}
-                    src={e.pictureUrl}
-                    alt="pic"
-                  />
-                </td>
-                <td> {e.name}</td>
-                <td>{e.popularity.toFixed(2)}</td>
-                <td>{e.wonOscar && '🏆'}</td>
-                <td>{e.wonEmmy && '🌟'}</td>
-                <td>
-                  <button
-                    onClick={() => {
-                      handleDelete(e.id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            </>
-          );
-        })}
-      </table>
+      <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div>
+          <button className="button" onClick={handleAddContact}>
+            Add Random Contact
+          </button>
+          <button className="button" onClick={handlePopSort}>
+            Sort by popularity
+          </button>
+          <button className="button" onClick={handleNameSort}>
+            Sort by name
+          </button>
+        </div>
+        <div>
+          <table>
+            {allContacts.map((e) => {
+              return (
+                <>
+                  <tr>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Popularity</th>
+                    <th>Won Oscar</th>
+                    <th>Won Emmy</th>
+                    <th>Actions</th>
+                  </tr>
+                  <tr>
+                    <td>
+                      <img
+                        style={{ height: '80px' }}
+                        src={e.pictureUrl}
+                        alt="pic"
+                      />
+                    </td>
+                    <td style={{ textAlign: '-webkit-center' }}> {e.name}</td>
+                    <td>{e.popularity.toFixed(2)}</td>
+                    <td>{e.wonOscar && '🏆'}</td>
+                    <td>{e.wonEmmy && '🌟'}</td>
+                    <td>
+                      <button
+                        onClick={() => {
+                          handleDelete(e.id);
+                        }}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
